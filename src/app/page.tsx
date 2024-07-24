@@ -1,19 +1,17 @@
 'use client'
-import { Card, CardHeader, Grid } from "@mui/material";
+import { Button, Card, CardHeader, Grid } from "@mui/material";
 import SearchBar from "./ui/searchCharacter/SearchBar";
 import { useContext, useState } from "react";
 import { getCharacter } from "@/api/character";
 import { Character } from "./lib/types";
 import CustomLoading from "./ui/loader/CustomLoading";
 import { CharacterContext } from "@/contexts/CharacterContext";
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
-
+  const router = useRouter();
   const characterContext = useContext(CharacterContext)
-  if (!characterContext) {
-    throw new Error("CharacterContext must be used within a CharacterProvider");
-  }
-  const {addCharacter} = CharacterContext;
+ 
   const [characters, setCharacters] = useState<Character[]>([])
   const [loading, setLoading] = useState(false);
 
@@ -32,6 +30,10 @@ export default function Home() {
     }}
   }
 
+  const navigateToMyCharactes = () =>{
+    router.push('/myCharacters')
+  }
+
 
 
 
@@ -46,12 +48,12 @@ export default function Home() {
          </Grid>
                 :
         <Grid item container display='flex' justifyContent='center' alignItems='center'>
-        {characters?.length>0 && characters.map((character)=>{
+        {characters?.length>0 && characters.map((char)=>{
          return (
           <Grid item sx={{margin:2, border:1}} >
-            <Card onClick={()=>addCharacter(character)}>
+            <Card onClick={()=>characterContext.addCharacter(char)}>
             <CardHeader
-            title={character.name}
+            title={char.name}
             titleTypographyProps={{variant:'h3', textAlign: 'center'}} 
             />
             </Card>
@@ -60,6 +62,23 @@ export default function Home() {
         })}
         </Grid>
 }
+      <Grid item container display='flex' justifyContent='center' alignItems='center'>
+        {characterContext.characters?.length>0 && characterContext.characters.map((char)=>{
+         return (
+          <Grid item sx={{margin:2, border:1}} >
+            <Card >
+            <CardHeader
+            title={char.name}
+            titleTypographyProps={{variant:'h3', textAlign: 'center'}} 
+            />
+            </Card>
+          </Grid>
+          )
+        })}
+      </Grid>
+      <Grid margin={2}>
+        <Button disabled={characterContext.characters?.length===0} onClick={navigateToMyCharactes} variant="contained">see all selected characters </Button>
+      </Grid>
     </Grid>
   );
 }

@@ -28,7 +28,13 @@ export interface GetCharacters {
     results: Character[];
   }
 
+export interface FilterTypes {
+    gender: string;
+    skin_color: string;
+    mass: string;
+}  
 export interface CharacterContextType {
     characters: Character[];
     addCharacter: (character: Character) => void;
+    createOptionToFilter: (type: keyof FilterTypes) => string[];
 }
