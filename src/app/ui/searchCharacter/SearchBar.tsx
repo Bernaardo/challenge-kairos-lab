@@ -1,4 +1,3 @@
-'use client'
 import { Box, Input, InputAdornment} from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { SearchBarProps } from "@/app/lib/types";
@@ -6,7 +5,7 @@ import { SearchBarProps } from "@/app/lib/types";
 const SearchBar= ({handleSearch}: SearchBarProps) => {
     
     return ( 
-        <Box sx={{display:'flex', flex:1, width: '100%', justifyContent:'center'}}>
+        <Box sx={{display:'flex', flex:1, height:'100%', justifyContent:'center'}}>
             <Input
             id="searchBar"
             placeholder="search"

@@ -1,5 +1,5 @@
 'use client'
-import { Button, Card, CardHeader, Grid } from "@mui/material";
+import { Button, Typography, Grid } from "@mui/material";
 import SearchBar from "./ui/searchCharacter/SearchBar";
 import { useContext, useState } from "react";
 import { getCharacter } from "@/api/character";
@@ -7,21 +7,27 @@ import { Character } from "./lib/types";
 import CustomLoading from "./ui/loader/CustomLoading";
 import { CharacterContext } from "@/contexts/CharacterContext";
 import { useRouter } from 'next/navigation';
+import CharacterCard from "./ui/character/CharacterCard";
 
 export default function Home() {
   const router = useRouter();
   const characterContext = useContext(CharacterContext)
  
-  const [characters, setCharacters] = useState<Character[]>([])
+  const [characterOptions, setCharacterOptions] = useState<Character[]>([])
+  const [characterSelected, setCharacterSelected] = useState<Character>()
   const [loading, setLoading] = useState(false);
 
   const handleSearch = async ( event: React.KeyboardEvent<HTMLInputElement> ) =>{
+    const keyEntered = event.key
+    const isValidkey = /^[a-zA-Z0-9\s-]$/.test(keyEntered);
+    if(!isValidkey) return;
+
     const name: string = event.currentTarget.value
     if(name.length>=3){
       setLoading(true);
     try {
       const {data}= await getCharacter(name)
-      setCharacters(data.results)
+      setCharacterOptions(data.results)
       
     } catch (error) {
       console.log(error)
@@ -30,54 +36,48 @@ export default function Home() {
     }}
   }
 
+  const handleCharacterSelect = (char: Character) => {
+    setCharacterSelected(char);
+    characterContext.addCharacter(char);
+  }
+
   const navigateToMyCharactes = () =>{
     router.push('/myCharacters')
   }
 
-
-
-
   return (
-    <Grid container xs={12} lg={12} sx={{height:'100%', width:'100%'}} display='flex'  justifyContent='center'  alignItems='center'>
-      <Grid item xs={12} lg={12} justifyContent='center' alignItems='center'>
+    <Grid container xs={12} lg={12} sx={{height:'100%', width:'100%'}} display='flex' flex={1} justifyContent='center'  alignItems='center' rowSpacing={2} >
+      <Grid item xs={12} lg={12} sx={{ display: 'flex', justifyContent:'center', marginTop:2}}>
         <SearchBar handleSearch={handleSearch}/>
       </Grid>
-        {loading ?
-          <Grid item xs={12} lg={12} display='flex' justifyContent='center' alignItems='center' margin={2}>
-            <CustomLoading/>
-         </Grid>
-                :
-        <Grid item container display='flex' justifyContent='center' alignItems='center'>
-        {characters?.length>0 && characters.map((char)=>{
-         return (
-          <Grid item sx={{margin:2, border:1}} >
-            <Card onClick={()=>characterContext.addCharacter(char)}>
-            <CardHeader
-            title={char.name}
-            titleTypographyProps={{variant:'h3', textAlign: 'center'}} 
-            />
-            </Card>
-          </Grid>
-          )
-        })}
-        </Grid>
-}
-      <Grid item container display='flex' justifyContent='center' alignItems='center'>
-        {characterContext.characters?.length>0 && characterContext.characters.map((char)=>{
-         return (
-          <Grid item sx={{margin:2, border:1}} >
-            <Card >
-            <CardHeader
-            title={char.name}
-            titleTypographyProps={{variant:'h3', textAlign: 'center'}} 
-            />
-            </Card>
-          </Grid>
-          )
-        })}
+      {loading ?
+      <Grid item xs={12} lg={12} display='flex' justifyContent='center' alignItems='center' margin={2}>
+        <CustomLoading/>
       </Grid>
-      <Grid margin={2}>
-        <Button disabled={characterContext.characters?.length===0} onClick={navigateToMyCharactes} variant="contained">see all selected characters </Button>
+              :
+      <Grid item container display='flex' justifyContent='center' alignItems='center'>
+      {characterOptions?.length>0 && characterOptions.map((char)=>{
+       return (
+        <Grid item  >
+          <Button onClick={()=>handleCharacterSelect(char)} variant="outlined" size="small">
+            <Typography variant="h5">{char.name}</Typography>
+          </Button>
+        </Grid>
+        )
+      })}
+      </Grid>
+}
+      <Grid item container display='flex' justifyContent={characterSelected?'space-evenly':'center'} alignItems='center' spacing={2}>
+      {characterSelected && 
+        <Grid item xs={12} md={9} lg={9}  >
+         <CharacterCard character={characterSelected}/>
+        </Grid>
+        }
+      {characterContext.characters.length>0 &&
+        <Grid item xs={12} md={3} lg={3} sx={{display:'flex', justifyContent:'center'}}>
+          <Button  onClick={navigateToMyCharactes} variant="contained">see all selected character</Button>
+        </Grid>
+        }
       </Grid>
     </Grid>
   );

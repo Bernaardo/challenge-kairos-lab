@@ -8,14 +8,16 @@ export const theme = createTheme(
         direction: 'ltr',
         palette: {
           primary: {
-            main: '#1a97f5',
-            light: '#e6f4ff',
-            dark: '#0078D3',
+            main: '#000000',
+            light: '#FF4A4A',
+            dark: '#A40000',
+            contrastText: '#ffffff',
           },
           secondary: {
-            main: '#1e4db7',
-            light: '#ddebff',
-            dark: '#173f98',
+            main: '#FFFFFF',
+            light: '#5DD3FF',
+            dark: '#0162DE',
+            contrastText: '#000000',
           },
           success: {
             main: '#60AF44',
@@ -29,9 +31,13 @@ export const theme = createTheme(
             dark: '#e45a68',
           },
           text: {
-            secondary: '#777e89',
+            primary:'#ffffff',
+            secondary: '#000000',
           },
-          
+          background: {
+            default: '#000000',
+            paper: '#565656'
+          },
           action: {
             disabledBackground: 'rgba(73,82,88,0.12)',
             hoverOpacity: 0.02,

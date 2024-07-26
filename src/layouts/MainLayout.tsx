@@ -10,7 +10,7 @@ const MainLayout =({children}: MainLayoutProps)=>{
     return (
         <Box sx={{display:'flex', flexDirection:'column', minHeight: '100vh'}}>
             <Header/>
-            <Container sx={{marginTop:'60px', flexGrow: 1}}>
+            <Container sx={{marginTop:'80px', display:'flex',flexGrow: 1, height:'100%'}}>
                 {children}
             </Container>
         </Box>

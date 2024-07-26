@@ -5,3 +5,6 @@ import axios from "axios"
 export const getCharacter = (name: string) =>{
     return axios.get<GetCharacters>(`${PEOPLE_PATH}/?search=${name}`)
 } 
+export const getFilm = (url: string) =>{
+    return axios.get(url);
+} 

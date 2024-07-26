@@ -31,10 +31,19 @@ export interface GetCharacters {
 export interface FilterTypes {
     gender: string;
     skin_color: string;
-    mass: string;
+    films: string;
 }  
+
 export interface CharacterContextType {
     characters: Character[];
     addCharacter: (character: Character) => void;
-    createOptionToFilter: (type: keyof FilterTypes) => string[];
+}
+
+export interface FilterBarProps {
+    setFilters: React.Dispatch<React.SetStateAction<FilterTypes>>;
+}
+
+export interface FilterFilm {
+    url: string;
+    title: string;
 }
