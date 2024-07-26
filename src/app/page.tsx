@@ -56,9 +56,9 @@ export default function Home() {
       </Grid>
               :
       <Grid item container display='flex' justifyContent='center' alignItems='center'>
-      {characterOptions?.length>0 && characterOptions.map((char)=>{
+      {characterOptions?.length>0 && characterOptions.map((char, index)=>{
        return (
-        <Grid item  >
+        <Grid item  key={`character-options-${index}`}>
           <Button onClick={()=>handleCharacterSelect(char)} variant="outlined" size="small">
             <Typography variant="h5">{char.name}</Typography>
           </Button>

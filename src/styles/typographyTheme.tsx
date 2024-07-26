@@ -3,7 +3,10 @@ import { TypographyOptions } from "@mui/material/styles/createTypography";
 const typography: TypographyOptions = {
   fontFamily: 'Star Jedi',
   body1: {
-    fontWeight: 400,
+    fontFamily: 'Roboto, Arial, sans-serif',
+    fontWeight: 200,
+    fontSize: '1rem',
+    lineHeight: '1.5',
   },
   h1: {
     fontWeight: 600,

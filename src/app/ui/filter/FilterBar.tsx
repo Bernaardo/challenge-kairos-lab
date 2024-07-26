@@ -47,7 +47,7 @@ const FilterBar = ({setFilters}: FilterBarProps) => {
             <Grid item xs={4} lg={4}>
                 <FormControl fullWidth>
                     <InputLabel>Gender</InputLabel>
-                    <Select onChange={(e: SelectChangeEvent<string>)=>{handleFilterChange(genderFilter, e.target.value)}}>
+                    <Select defaultValue={''} onChange={(e: SelectChangeEvent<string>)=>{handleFilterChange(genderFilter, e.target.value)}}>
                         <MenuItem value={''}>Todos</MenuItem>
                         {genders.map((gender, index:number)=>(
                             <MenuItem key={`gender-${index}`} value={gender}>
@@ -60,7 +60,7 @@ const FilterBar = ({setFilters}: FilterBarProps) => {
             <Grid item xs={4} lg={4}>
                 <FormControl fullWidth>
                     <InputLabel>Skin Color</InputLabel>
-                    <Select onChange={(e: SelectChangeEvent<string>)=>{handleFilterChange(skinColorFilter, e.target.value)}}>
+                    <Select defaultValue={''} onChange={(e: SelectChangeEvent<string>)=>{handleFilterChange(skinColorFilter, e.target.value)}}>
                         <MenuItem value={''}>Todos</MenuItem>
                         {skinColors.map((skin, index:number)=>(
                             <MenuItem key={`sking-${index}`} value={skin}>
@@ -73,7 +73,7 @@ const FilterBar = ({setFilters}: FilterBarProps) => {
             <Grid item xs={4} lg={4}>
                 <FormControl fullWidth>
                     <InputLabel>Films</InputLabel>
-                    <Select onChange={(e: SelectChangeEvent<string>)=>{handleFilterChange(filmsFilter, e.target.value)}}>
+                    <Select defaultValue={''} onChange={(e: SelectChangeEvent<string>)=>{handleFilterChange(filmsFilter, e.target.value)}}>
                         <MenuItem value={''}>Todos</MenuItem>
                         {loading? <CustomLoading/> : films.map((film, index:number)=>(
                             <MenuItem key={`film-${index}`} value={film.url}>
