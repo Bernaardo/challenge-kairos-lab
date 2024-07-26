@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Challenge KAIROS LAB
 
-## Getting Started
+Este proyecto es una aplicación de Next.js diseñada para una prueba técnica.
+## Empezando
 
-First, run the development server:
+Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Prerrequisitos
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Necesitas tener Node.js y npm (o yarn) instalados en tu máquina.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Instalación
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Clona el repositorio:
 
-## Learn More
+    ```bash
+    git clone https://github.com/Bernaardo/challenge-kairos-lab.git
+    ```
 
-To learn more about Next.js, take a look at the following resources:
+2. Navega al directorio del proyecto:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    ```bash
+    cd challenge-kairos-lab
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+3. Instala las dependencias:
 
-## Deploy on Vercel
+    ```bash
+    npm install
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    o si usas yarn:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+    ```bash
+    yarn install
+    ```
+
+## Scripts Disponibles
+
+En el directorio del proyecto, puedes ejecutar:
+
+### `npm run dev`
+
+Ejecuta la aplicación en modo de desarrollo.\
+Abre [http://localhost:3000](http://localhost:3000) para verlo en el navegador.
+
+La página se recargará si haces cambios.\
+También verás cualquier error de lint en la consola.
+
+### `npm run build`
+
+Construye la aplicación para producción en la carpeta `build`.\
+Optimiza la construcción para el mejor rendimiento.
+
+### `npm start`
+
+Inicia un servidor Node.js para servir tu aplicación en producción.\
+Asegúrate de haber ejecutado `npm run build` antes de esto.
+
+## Tecnologías Utilizadas
+
+- [Next.js](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Material-UI](https://mui.com/)
+
+
