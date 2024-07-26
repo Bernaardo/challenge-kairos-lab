@@ -45,19 +45,19 @@ export default function MyCharactes(){
 
     return (
         <Grid container xs={12} lg={12} display='flex' justifyContent='center' alignItems='center' >
-          <Grid item  xs={12} lg={12} sx={{marginTop:2, display:'flex', justifyContent:'center'}} >
+          <Grid item  xs={12} lg={12} sx={{marginTop:2, display:'flex', justifyContent:'center', marginBottom:1}} >
             <FilterBar setFilters={setFilters}/>
           </Grid>
           {paginatedCharacters?.length>0 ? paginatedCharacters.map((char)=>(
-                <Grid item xs={12} md={6} lg={6} key={char.name} sx={{paddingLeft:2, paddingRight:2}}>
+                <Grid item xs={12} md={6} lg={6} key={char.name} sx={{paddingLeft:2, paddingRight:2,marginBottom:1,marginTop:1,}}>
                     <CharacterCard character={char} />
                 </Grid>
             )):(
-              <Typography variant="h6" textAlign="center" sx={{ margin: 2 }}>
+              <Typography variant="h2" textAlign="center" sx={{ margin: 2 }}>
                   No characters found.
               </Typography>
           )}
-           <Grid item container xs={12} lg={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom:2,}}>
+           <Grid item container xs={12} lg={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom:1, marginTop:1,}}>
             <Grid item sx={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}>
                 <Pagination
                     count={Math.ceil(filteredChar.length / charactersPerPage)}
@@ -65,11 +65,11 @@ export default function MyCharactes(){
                     onChange={handlePageChange}
                     showFirstButton 
                     showLastButton
-                    sx={{ marginTop:-4}}
+                    sx={{ marginTop:0}}
                 />
             </Grid>
-                <Button onClick={() => router.push('/')} variant="contained" sx={{ position: 'absolute', right: 10 }}>
-                    Back
+                <Button onClick={() => router.push('/')} variant="contained" sx={{ position: {xs:'relative', sm:'absolute'}, right: 0, margin:2 }}>
+                    BACK
                 </Button>
           </Grid>
       

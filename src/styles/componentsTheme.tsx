@@ -249,31 +249,26 @@ const components: Components<Theme>={
     },
   },
 
-  MuiTabs: {
+  MuiPagination: {
     styleOverrides: {
       root: (props) => ({
-        backgroundColor: props.theme.palette.background.default, 
-      }),
-      indicator: (props) => ({
-        backgroundColor: props.theme.palette.secondary.main, 
+        marginTop: '0px',
+        marginBottom: '0px',
       }),
     },
   },
-
-  MuiTab: {
+  MuiPaginationItem: {
     styleOverrides: {
       root: (props) => ({
         '&.Mui-selected': {
-          color: props.theme.palette.secondary.main, 
+          backgroundColor: props.theme.palette.primary.main,
+          color: props.theme.palette.secondary.light,
+          boxShadow: `0px 0px 12px ${props.theme.palette.secondary.light}`, 
+          '&:hover': {
+            backgroundColor: props.theme.palette.secondary.light,
+            color: props.theme.palette.primary.contrastText,
+          },
         },
-        '&.Mui-focusVisible': {
-          backgroundColor: props.theme.palette.secondary.main, 
-        },
-        '&:hover': {
-          backgroundColor: props.theme.palette.action.hover,
-        },
-        color: props.theme.palette.secondary.contrastText, 
-        borderBottom: `4px solid ${props.theme.palette.secondary.main}`,
       }),
     },
   },

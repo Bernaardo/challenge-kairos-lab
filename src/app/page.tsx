@@ -67,15 +67,15 @@ export default function Home() {
       })}
       </Grid>
 }
-      <Grid item container display='flex' justifyContent={characterSelected?'space-evenly':'center'} alignItems='center' spacing={2}>
+      <Grid item container sx={{display:'flex', justifyContent:'center', alignItems:'center'}}>
       {characterSelected && 
-        <Grid item xs={12} md={9} lg={9}  >
+        <Grid item xs={12} md={9} lg={9}  sx={{margin:0, padding:1 }}>
          <CharacterCard character={characterSelected}/>
         </Grid>
         }
       {characterContext.characters.length>0 &&
-        <Grid item xs={12} md={3} lg={3} sx={{display:'flex', justifyContent:'center'}}>
-          <Button  onClick={navigateToMyCharactes} variant="contained">see all selected character</Button>
+        <Grid item xs={12} md={3} lg={3} sx={{display:'flex', justifyContent:'center', padding:1}}>
+          <Button  onClick={navigateToMyCharactes} variant="contained">SEE ALL SELECTED CHARACTERS</Button>
         </Grid>
         }
       </Grid>

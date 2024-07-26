@@ -4,6 +4,7 @@ import { FilterBarProps, FilterFilm } from "@/app/lib/types";
 import { CharacterContext } from "@/contexts/CharacterContext";
 import { FormControl, Grid, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
 import { getFilm } from "@/api/character";
+import CustomLoading from "../loader/CustomLoading";
 
 const FilterBar = ({setFilters}: FilterBarProps) => {
     const {characters} = useContext(CharacterContext)
@@ -29,8 +30,9 @@ const FilterBar = ({setFilters}: FilterBarProps) => {
             setFilms(filmData);
         } catch (error) {
             console.log(error);
+        } finally {
+            setLoading(false);
         }
-        setLoading(false);
     };
 
     useEffect(() => {
@@ -73,7 +75,7 @@ const FilterBar = ({setFilters}: FilterBarProps) => {
                     <InputLabel>Films</InputLabel>
                     <Select onChange={(e: SelectChangeEvent<string>)=>{handleFilterChange(filmsFilter, e.target.value)}}>
                         <MenuItem value={''}>Todos</MenuItem>
-                        {films.length>0 && films.map((film, index:number)=>(
+                        {loading? <CustomLoading/> : films.map((film, index:number)=>(
                             <MenuItem key={`film-${index}`} value={film.url}>
                                 {film.title}
                             </MenuItem>
