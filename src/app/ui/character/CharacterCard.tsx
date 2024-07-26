@@ -6,7 +6,7 @@ import { CardContent, Card, CardHeader, Grid, Typography } from "@mui/material";
 const CharacterCard = ({ character }: { character: Character }) => {
   
     return (
-      <Card sx={{ margin: 2, padding: 2}}>
+      <Card sx={{ margin: 0, padding: 2}}>
         <CardHeader
           title={character.name}
           titleTypographyProps={{ variant: 'h3', textAlign: 'center' }}
