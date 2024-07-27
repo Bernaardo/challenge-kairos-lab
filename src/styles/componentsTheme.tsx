@@ -260,14 +260,15 @@ const components: Components<Theme>={
   MuiPaginationItem: {
     styleOverrides: {
       root: (props) => ({
-        '&.Mui-selected': {
-          backgroundColor: props.theme.palette.primary.main,
+        '&:hover': {
+          boxShadow: `0px 0px 12px ${props.theme.palette.secondary.light}`,
           color: props.theme.palette.secondary.light,
+        },
+        '&.Mui-selected': {
+          backgroundColor: props.theme.palette.secondary.light,
+          color: props.theme.palette.primary.contrastText,
           boxShadow: `0px 0px 12px ${props.theme.palette.secondary.light}`, 
-          '&:hover': {
-            backgroundColor: props.theme.palette.secondary.light,
-            color: props.theme.palette.primary.contrastText,
-          },
+       
         },
       }),
     },
