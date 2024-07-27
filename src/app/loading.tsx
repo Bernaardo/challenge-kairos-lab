@@ -1,9 +1,11 @@
-import { Box, Typography} from "@mui/material";
+import { Grid} from "@mui/material";
 import CustomLoading from "./ui/loader/CustomLoading";
 export default function Loading() {
-    return (
-      <Box sx={{display:'flex', flex:1, width: '100%', marginTop: "100px"}}>
+  return (
+    <Grid container xs={12} lg={12} sx={{height:'100%', width:'100%'}} display='flex' flex={1} justifyContent='center'  alignItems='center' rowSpacing={2} >
+      <Grid item xs={12} lg={12} display='flex' justifyContent='center' alignItems='center' margin={2}>
         <CustomLoading/>
-      </Box>
+      </Grid>
+    </Grid>
     )
   }
